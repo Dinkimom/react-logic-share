@@ -1,19 +1,23 @@
-import { CreateTodoDTO, UpdateTodoDTO, GetAllTodosDTO } from "@react-logic-share/types";
-import { AxiosInstance } from "axios";
+import {
+  CreateTodoDTO,
+  UpdateTodoDTO,
+  GetAllTodosDTO,
+} from '@react-logic-share/types';
+import { AxiosInstance } from 'axios';
 
 export const createTodoApi = (httpClient: AxiosInstance) => ({
   create: async (data: CreateTodoDTO) => {
-    await httpClient.post("/", data);
+    await httpClient.post('/todo', data);
   },
-  update: async ({ _id, ...data }: UpdateTodoDTO) => {
-    await httpClient.put(`/${_id}`, data);
+  update: async (data: UpdateTodoDTO) => {
+    await httpClient.put('/todo', data);
   },
   delete: async (id: string) => {
-    await httpClient.delete(id);
+    await httpClient.delete(`/todo/${id}`);
   },
   getAll: async (): Promise<GetAllTodosDTO> => {
-    const response = await httpClient.get<GetAllTodosDTO>("/getAll");
+    const response = await httpClient.get<GetAllTodosDTO>('/todo/getAll');
 
     return response.data;
-  }
+  },
 });

@@ -17,7 +17,7 @@ const onRejected = (error: AxiosError) => {
 };
 
 export const createHttpClient = ({ baseUrl }: { baseUrl: string }): AxiosInstance => {
-  const client = axios.create(createConfig(baseUrl));
+  const client = axios.create(createConfig(`${baseUrl}/api`));
 
   client.interceptors.response.use(onFulfilled, onRejected);
 
