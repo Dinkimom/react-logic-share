@@ -1,13 +1,14 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.css';
-import NxWelcome from './nx-welcome';
+import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { TodoList } from '../features/Todo';
 
-export function App() {
+const queryClient = new QueryClient();
+
+function App() {
   return (
-    <>
-      <NxWelcome title="web" />
-      <div />
-    </>
+    <QueryClientProvider client={queryClient}>
+      <TodoList />
+    </QueryClientProvider>
   );
 }
 
