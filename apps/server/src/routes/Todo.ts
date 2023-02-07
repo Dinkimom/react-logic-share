@@ -9,17 +9,19 @@ todoRouter.post('/', async (req: Request<undefined, CreateTodoDTO>, res) => {
     await TodoController.create(req.body);
 
     res.sendStatus(200);
-  } catch {
+  } catch (error) {
+    console.error(error);
     res.sendStatus(422);
   }
 });
 
-todoRouter.put('/:id', async (req: Request<undefined, UpdateTodoDTO>, res) => {
+todoRouter.put('/', async (req: Request<undefined, UpdateTodoDTO>, res) => {
   try {
     await TodoController.update(req.body);
 
     res.sendStatus(200);
-  } catch {
+  } catch (error) {
+    console.error(error);
     res.sendStatus(422);
   }
 });
