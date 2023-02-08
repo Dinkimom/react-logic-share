@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Actions } from '../NewTodoForm';
 
 export const useNewTodoForm = ({ createTodo }: Actions) => {
-  const { register, handleSubmit, reset } = useForm<CreateTodoDTO>();
+  const { control, handleSubmit, reset } = useForm<CreateTodoDTO>();
 
   const onSubmit = (data: CreateTodoDTO) => {
     createTodo(data);
@@ -11,7 +11,7 @@ export const useNewTodoForm = ({ createTodo }: Actions) => {
   };
 
   return {
-    data: { register },
+    data: { control },
     handlers: { onSubmit: handleSubmit(onSubmit) },
   };
 };

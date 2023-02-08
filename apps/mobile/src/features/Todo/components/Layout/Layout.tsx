@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { Text, View } from 'react-native';
 
 interface Props {
   isLoading: boolean;
@@ -8,11 +9,11 @@ interface Props {
 
 export const Layout: React.FC<Props> = ({ isLoading, newTodoForm, todos }) => {
   return (
-    <div>
-      <h1>Todo list</h1>
-      {isLoading && <p>loading</p>}
+    <View>
+      <Text>Todo list</Text>
+      {isLoading && <Text>loading</Text>}
       {newTodoForm}
-      <div>{todos}</div>
-    </div>
+      <View>{todos}</View>
+    </View>
   );
 };

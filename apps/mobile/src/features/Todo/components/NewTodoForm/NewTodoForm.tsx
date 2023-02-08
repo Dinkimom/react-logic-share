@@ -1,5 +1,7 @@
 import { CreateTodoDTO } from '@react-logic-share/types';
 import React from 'react';
+import { Controller } from 'react-hook-form';
+import { Button, TextInput, View } from 'react-native';
 import { useNewTodoForm } from './hooks';
 
 export interface Actions {
@@ -12,14 +14,23 @@ interface Props {
 
 export const NewTodoForm: React.FC<Props> = ({ actions }) => {
   const {
-    data: { register },
+    data: { control },
     handlers: { onSubmit },
   } = useNewTodoForm(actions);
 
   return (
-    <form onSubmit={onSubmit}>
-      <input type="text" {...register('title')} />
-      <button type="submit">Add</button>
-    </form>
+    <View>
+      <Controller
+        control={control}
+        rules={{
+          required: true,
+        }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <TextInput onBlur={onBlur} onChangeText={onChange} value={value} />
+        )}
+        name="title"
+      />
+      <Button onPress={onSubmit} title="Add" />
+    </View>
   );
 };

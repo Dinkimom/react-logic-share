@@ -1,5 +1,6 @@
 import { Todo, UpdateTodoDTO } from '@react-logic-share/types';
 import React from 'react';
+import { Button, Switch, TextInput, View } from 'react-native';
 
 interface Actions {
   updateTodo: (data: UpdateTodoDTO) => void;
@@ -13,22 +14,20 @@ interface Props {
 
 export const TodoCard: React.FC<Props> = ({ actions, todo }) => {
   return (
-    <div>
-      <input
-        type="text"
+    <View>
+      <TextInput
         defaultValue={todo.title}
-        onChange={(event) =>
-          actions.updateTodo({ _id: todo._id, title: event.target.value })
+        onChangeText={(value) =>
+          actions.updateTodo({ _id: todo._id, title: value })
         }
       />
-      <input
-        type="checkbox"
-        checked={todo.isCompleted}
-        onChange={() =>
+      <Switch
+        value={todo.isCompleted}
+        onValueChange={() =>
           actions.updateTodo({ _id: todo._id, isCompleted: !todo.isCompleted })
         }
       />
-      <button onClick={() => actions.deleteTodo(todo._id)}>Delete</button>
-    </div>
+      <Button onPress={() => actions.deleteTodo(todo._id)} title="Delete" />
+    </View>
   );
 };
