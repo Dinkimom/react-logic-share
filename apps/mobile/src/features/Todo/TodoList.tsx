@@ -14,8 +14,8 @@ export const TodoList: React.FC = () => {
     <Layout
       isLoading={isLoading}
       newTodoForm={<NewTodoForm actions={{ createTodo }} />}
-      todos={todos?.map((todo) => (
-        <TodoCard todo={todo} actions={{ updateTodo, deleteTodo }} />
+      todos={todos?.map((todo, index) => (
+        <TodoCard todo={todo} actions={{ updateTodo, deleteTodo }} key={index} />
       ))}
     />
   );

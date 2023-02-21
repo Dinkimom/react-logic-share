@@ -4,7 +4,6 @@ const createConfig = (baseURL: string) => {
   return {
     baseURL,
     timeout: 30 * 1000,
-    withCredentials: true
   };
 };
 
