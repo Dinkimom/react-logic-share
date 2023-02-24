@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 interface Props {
   isLoading: boolean;
@@ -9,11 +9,16 @@ interface Props {
 
 export const Layout: React.FC<Props> = ({ isLoading, newTodoForm, todos }) => {
   return (
-    <View>
-      <Text>Todo list</Text>
-      {isLoading && <Text>loading</Text>}
+    <View style={styles.wrapper}>
+      {/* {isLoading && <Loader/>} */}
       {newTodoForm}
       <View>{todos}</View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  wrapper: {
+    padding: 16,
+  },
+});
