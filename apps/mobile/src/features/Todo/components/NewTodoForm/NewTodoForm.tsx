@@ -46,6 +46,7 @@ export const NewTodoForm: React.FC<Props> = ({ actions }) => {
 const styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'row',
+    marginTop: 'auto',
   },
   input: {
     borderWidth: 1,

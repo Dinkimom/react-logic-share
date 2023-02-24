@@ -7,12 +7,11 @@ interface Props {
   todos: ReactNode;
 }
 
-export const Layout: React.FC<Props> = ({ isLoading, newTodoForm, todos }) => {
+export const Layout: React.FC<Props> = ({ newTodoForm, todos }) => {
   return (
     <View style={styles.wrapper}>
-      {/* {isLoading && <Loader/>} */}
-      {newTodoForm}
       <View>{todos}</View>
+      {newTodoForm}
     </View>
   );
 };
@@ -20,5 +19,7 @@ export const Layout: React.FC<Props> = ({ isLoading, newTodoForm, todos }) => {
 const styles = StyleSheet.create({
   wrapper: {
     padding: 16,
+    flexDirection: 'column',
+    height: '100%',
   },
 });

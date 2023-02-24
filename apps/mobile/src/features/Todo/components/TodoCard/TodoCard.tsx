@@ -52,7 +52,7 @@ export const TodoCard: React.FC<Props> = ({ actions, todo }) => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginTop: 16,
+    marginBottom: 16,
     flexDirection: 'row',
     alignItems: 'center',
   },
