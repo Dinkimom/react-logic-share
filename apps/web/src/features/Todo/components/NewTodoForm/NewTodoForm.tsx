@@ -1,6 +1,7 @@
 import { CreateTodoDTO } from '@react-logic-share/types';
 import React from 'react';
 import { useNewTodoForm } from './hooks';
+import * as S from './styled';
 
 export interface Actions {
   createTodo: (data: CreateTodoDTO) => void;
@@ -17,9 +18,13 @@ export const NewTodoForm: React.FC<Props> = ({ actions }) => {
   } = useNewTodoForm(actions);
 
   return (
-    <form onSubmit={onSubmit}>
-      <input type="text" {...register('title')} />
-      <button type="submit">Add</button>
-    </form>
+    <S.Form onSubmit={onSubmit}>
+      <S.Input
+        type="text"
+        {...register('title')}
+        placeholder="Введите заголовок задачи..."
+      />
+      <S.Button type="submit">Создать</S.Button>
+    </S.Form>
   );
 };

@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import * as S from './styled';
 
 interface Props {
   isLoading: boolean;
@@ -8,11 +9,10 @@ interface Props {
 
 export const Layout: React.FC<Props> = ({ isLoading, newTodoForm, todos }) => {
   return (
-    <div>
-      <h1>Todo list</h1>
+    <S.Wrapper>
       {isLoading && <p>loading</p>}
       {newTodoForm}
-      <div>{todos}</div>
-    </div>
+      <S.List>{todos}</S.List>
+    </S.Wrapper>
   );
 };
