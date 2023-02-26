@@ -5,12 +5,21 @@ import {
 } from '@react-logic-share/types';
 import { AxiosInstance } from 'axios';
 
-export const createTodoApi = (httpClient: AxiosInstance) => ({
+export interface TodoApi {
+  create: (data: CreateTodoDTO) => Promise<void>;
+  update: (data: UpdateTodoDTO) => Promise<GetAllTodosDTO>;
+  delete: (id: string) => Promise<void>;
+  getAll: () => Promise<GetAllTodosDTO>;
+}
+
+export const createTodoApi = (httpClient: AxiosInstance): TodoApi => ({
   create: async (data: CreateTodoDTO) => {
     await httpClient.post('/todo', data);
   },
   update: async (data: UpdateTodoDTO) => {
-    await httpClient.put('/todo', data);
+    const response = await httpClient.put<GetAllTodosDTO>('/todo', data);
+
+    return response.data;
   },
   delete: async (id: string) => {
     await httpClient.delete(`/todo/${id}`);

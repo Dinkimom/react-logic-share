@@ -1,5 +1,8 @@
 import React, { ReactNode } from 'react';
-import { StyleSheet, View } from 'react-native';
+import {
+  StyleSheet,
+  View,
+} from 'react-native';
 
 interface Props {
   isLoading: boolean;

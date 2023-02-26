@@ -1,10 +1,10 @@
-import { CreateTodoDTO, UpdateTodoDTO } from '@react-logic-share/types';
+import { CreateTodoDTO, GetAllTodosDTO, UpdateTodoDTO } from '@react-logic-share/types';
 import { Request, Router } from 'express';
 import { TodoController } from '../controllers/Todo';
 
 export const todoRouter = Router();
 
-todoRouter.post('/', async (req: Request<undefined, CreateTodoDTO>, res) => {
+todoRouter.post('/', async (req: Request<undefined, undefined, CreateTodoDTO>, res) => {
   try {
     await TodoController.create(req.body);
 
@@ -15,11 +15,13 @@ todoRouter.post('/', async (req: Request<undefined, CreateTodoDTO>, res) => {
   }
 });
 
-todoRouter.put('/', async (req: Request<undefined, UpdateTodoDTO>, res) => {
+todoRouter.put('/', async (req: Request<undefined, GetAllTodosDTO, UpdateTodoDTO>, res) => {
   try {
     await TodoController.update(req.body);
 
-    res.sendStatus(200);
+    const todos = await TodoController.getAll();
+
+    res.status(200).send(todos);
   } catch (error) {
     console.error(error);
     res.sendStatus(422);

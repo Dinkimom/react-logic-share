@@ -63,6 +63,7 @@
   "dependencies": {
     "@expo/metro-config": "0.5.2",
     "@expo/webpack-config": "~0.17.4",
+    "add": "^2.0.6",
     "axios": "^1.0.0",
     "core-js": "^3.27.2",
     "cors": "^2.8.5",
@@ -80,9 +81,12 @@
     "react-native": "0.70.5",
     "react-native-svg": "13.4.0",
     "react-native-svg-transformer": "1.0.0",
+    "react-native-toast-message": "^2.1.5",
     "react-native-web": "~0.18.10",
     "react-query": "^3.39.3",
+    "react-toastify": "^9.1.1",
     "styled-components": "^5.3.6",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "yarn": "^1.22.19"
   }
 }

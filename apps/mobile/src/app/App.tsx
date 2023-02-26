@@ -3,6 +3,7 @@ import React from 'react';
 import { SafeAreaView, StatusBar } from 'react-native';
 import { TodoList } from '../features/Todo';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import Toast from 'react-native-toast-message';
 
 const queryClient = new QueryClient();
 
@@ -12,6 +13,7 @@ export const App = () => {
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <TodoList />
+        <Toast />
       </SafeAreaView>
     </QueryClientProvider>
   );

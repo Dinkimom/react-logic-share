@@ -1,14 +1,14 @@
 import { useMutation, useQuery, useQueryClient } from 'react-query';
-import { createTodoApi } from '../api';
+import { TodoApi } from '../api';
+import { NotificationService } from '../types';
 
 type Deps = {
-  todoApi: ReturnType<typeof createTodoApi>; // todo add todoApi type
-  // todo add more specific ui case, such like notification service or modal service
-  // notificationService: NotificationService; // if you complete all the todos show success modal !!!
+  todoApi: TodoApi;
+  notificationService: NotificationService;
 };
 
 export const createUseTodo =
-  ({ todoApi }: Deps) =>
+  ({ todoApi, notificationService }: Deps) =>
   () => {
     const queryClient = useQueryClient();
     const { isLoading, data: todos } = useQuery('getAllTodos', todoApi.getAll);
@@ -20,7 +20,14 @@ export const createUseTodo =
     });
 
     const updateTodo = useMutation(todoApi.update, {
-      onSuccess: () => {
+      onSuccess: (updatedTodos) => {
+        if (
+          updatedTodos.length &&
+          updatedTodos.every((todo) => todo.isCompleted)
+        ) {
+          notificationService.notify('Все задания выполнены!');
+        }
+
         queryClient.invalidateQueries('getAllTodos');
       },
     });
