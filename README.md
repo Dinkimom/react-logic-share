@@ -45,7 +45,7 @@ yarn start:mobile
 
 ## Полезные материалы
 
-[Ссылка на презентацию с митапа](https://docs.google.com/presentation/d/1Jv8rgjJyEmIFS1Nq1Desbuv2oUTUjZfmNvX3AWQQuCw)
+[Ссылка на презентацию с митапа](https://cloud.mail.ru/public/Lrqq/P8ptRTmZ5)
 
 [Роберт Мартин "Чистая архитектура. Искусство разработки программного обеспечения"](https://www.litres.ru/robert-s-martin/chistaya-arhitektura-iskusstvo-razrabotki-program-39113892/)
 
