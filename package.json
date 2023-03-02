@@ -2,7 +2,11 @@
   "name": "react-logic-share",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start:server": "npx nx serve server",
+    "start:web": "npx nx serve web",
+    "start:mobile": "npx nx start mobile"
+  },
   "private": true,
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",
